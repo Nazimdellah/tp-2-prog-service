@@ -13,9 +13,9 @@
         <div class="col" *ngFor="let i of tabArtist">
           <h4>{{i.name}}</h4>
           <img [src]="i.imageUrl" [alt]="i.name">
-         <a [routerLink]="['/album',artistName]">Chercher les albums</a>
+          <a [routerLink]="['/album',artistName]">Chercher les albums</a>
+          <a [routerLink]="['/show', i.name]"><button>Concerts</button></a>
 
-          <button (click)="Show.getShow(artistName)">Concerts</button>
 
         </div>
       </div>

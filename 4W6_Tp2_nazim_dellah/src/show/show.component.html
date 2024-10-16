@@ -4,31 +4,16 @@
     <img src="/assets/googlemap.png" alt="Google Map" class="map">
     <div class="shows">
       <!-- Liste des concerts -->
-      <div>
-        <h4>Jan 1, 2024, 8:00:00 PM</h4>
-        <p>Pays</p>
-        <p>Ville</p>
+      <div *ngFor="let show of shows" class="show-item">
+        <h4>{{show.date}}</h4>
+        <p>{{show.country}}</p>
+        <p>{{show.city}}</p>
       </div>
-      <div>
-        <h4>Jan 1, 2024, 8:00:00 PM</h4>
-        <p>Pays</p>
-        <p>Ville</p>
+      <div *ngIf="shows.length == 0">
+        <p translate>show.none</p>
       </div>
-      <div>
-        <h4>Jan 1, 2024, 8:00:00 PM</h4>
-        <p>Pays</p>
-        <p>Ville</p>
-      </div>
-      <div>
-        <h4>Jan 1, 2024, 8:00:00 PM</h4>
-        <p>Pays</p>
-        <p>Ville</p>
-      </div>
-      <div>
-        <h4>Jan 1, 2024, 8:00:00 PM</h4>
-        <p>Pays</p>
-        <p>Ville</p>
-      </div>
+
     </div>
+
   </div>
 </main>
