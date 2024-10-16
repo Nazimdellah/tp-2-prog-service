@@ -9,8 +9,9 @@ export const routes: Routes = [
     { path: "artist", component: ArtistComponent },
     { path: "album", component: AlbumComponent },
     { path: "song", component: SongComponent },
-    { path: "show", component: ShowComponent } ,
+    { path: "show", component: ShowComponent },
     { path: "album/:artiste", component: AlbumComponent },
-    { path: "album/:Song", component: SongComponent },
+    { path: "show/:artistName", component: ShowComponent },
+    { path: "song/:albumName/:albumId", component: SongComponent }
 
 ];

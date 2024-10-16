@@ -1,7 +1,7 @@
 <main>
   <div class="row">
     <div class="albums">
-      <h3>Albums de l'artiste  {{nomArtist}}</h3>
+      <h3>Albums de l'artiste {{nomArtist}}</h3>
       <div class="row">
         <!-- Liste d'albums d'un artiste choisi -->
         <div *ngFor="let a of spotify.albums">
@@ -11,8 +11,8 @@
             {{a.name}}
             <br>
             <img class="img-fluid" [src]="a.imageUrl" [alt]="a.name">
-        </p>
-        <a [routerLink]="['/song',a]">Chonson</a>
+          </p>
+          <a [routerLink]="['/song', a.name, a.id]">Chonson</a>
         </div>
       </div>
     </div>

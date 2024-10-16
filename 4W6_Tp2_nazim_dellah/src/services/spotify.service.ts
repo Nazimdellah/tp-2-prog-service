@@ -64,14 +64,14 @@ export class SpotifyService {
     }
   }
 
-  async getSongs(album: Album): Promise<Song[]> {
+  async getSongs(albumId: string | null): Promise<Song[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.spotifyToken
       })
     };
-    let x = await lastValueFrom(this.http.get<any>("https://api.spotify.com/v1/albums/" + album.id, httpOptions));
+    let x = await lastValueFrom(this.http.get<any>("https://api.spotify.com/v1/albums/" + albumId, httpOptions));
     console.log(x);
 
     let songs: Song[] = [];

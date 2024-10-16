@@ -5,7 +5,7 @@ import { Song } from './../models/Song';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { SpotifyService } from '../services/spotify.service';
 
 
@@ -14,36 +14,37 @@ import { SpotifyService } from '../services/spotify.service';
   templateUrl: './song.component.html',
   styleUrls: ['./song.component.css'],
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule]
+  imports: [CommonModule, RouterModule, FormsModule, CommonModule, RouterOutlet]
 })
 export class SongComponent implements OnInit {
   Artist: Artist | null = null;
   nomAlbum: string | null = null;
-  nomArtist: string | null = null;
+  albumId: string | null = null
+  song?: Song;
   listSong: Song[] = [];
-Album: Album | null = null;
+  Album: Album | null = null;
 
 
-  constructor(public route: ActivatedRoute, public spotify: SpotifyService) { }
+  constructor(public route: ActivatedRoute, public spotify: SpotifyService,) { }
 
   async ngOnInit() {
-    if (this.nomAlbum != null) {
 
-      this.nomAlbum = this.route.snapshot.paramMap.get('album');
-    }
+
+    this.nomAlbum = this.route.snapshot.paramMap.get("albumName")
+    this.albumId = this.route.snapshot.paramMap.get("albumId")
+    this.spotify.connect()
+    this.getSong()
+
+
   }
 
 
 
 
 
-    async Start(Album: Album) {
-      if (Album!= null  ) {
+  async getSong() {
+    this.listSong = await this.spotify.getSongs(this.albumId)
 
-        this.listSong = await this.spotify.getSongs(Album);
-        console.log(this.listSong);
-      }
-
-    }
+  }
 
 }
